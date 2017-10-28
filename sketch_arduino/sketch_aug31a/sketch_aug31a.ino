@@ -33,14 +33,13 @@ void loop()
     value2 = analogRead(flexpin2);
     value3 = analogRead(flexpin3);
     Serial.print("little Finger :");
-    Serial.println(flexpin0);
+    Serial.println(Value0);
     Serial.print("middle Finger :");
-    Serial.println(flexpin1);
+    Serial.println(value1);
     Serial.print("index Finger :");
-    Serial.println(flexpin2);
+    Serial.println(value2);
     Serial.print("Thumb Finger :");
-    Serial.println(flexpin3);
-
+    Serial.println(value3);
 
 
   Serial.println();
