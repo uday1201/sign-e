@@ -1,0 +1,2 @@
+To this point , we have designed our circuit and implemented it on Aurdino 
+we are one step away from getting raw data from MPU6050(Accelero and gyro sensor )to the serial output 
