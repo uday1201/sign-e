@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>SIGN-e</title>
+		<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+		<script type="text/javascript">
+			var word = "blank";
+			function getDataFromSerial(){
+				$.post(
+					"getWord/", 
+					{"csrfmiddlewaretoken" : "{{ csrf_token }}"},
+					function (data, status){
+						if (data.word != word){
+							word = data.word;
+							if (word == "blank")
+								$("#data").html = "";
+							else
+								$("#data").html = word;
+						}
+					},
+					"json"
+				);
+			}
+			$(document).ready(function(){
+				setTimeout(function(){
+					getDataFromSerial();
+				}, 1000);
+			});
+		</script>
+	</head>
+	<body>
+		<center>
+			<h1>
+				<span id="data"></span>
+			</h1>
+		</center>
+	</body>
+</html>
