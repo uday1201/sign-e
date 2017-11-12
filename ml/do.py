@@ -8,6 +8,7 @@ word = ''
 
 def predict_from_serial(ser, file_name):
 	global prev_alpha
+	global word
 	cl = pickle.load(open(file_name, "rb"))
 
 
@@ -22,12 +23,12 @@ def predict_from_serial(ser, file_name):
 				yield ""
 			else:
 				prev_alpha = value
-				if value == "blank":
+				if value == "h":
 					temp = word
 					word = ''
-					yield "<br>"
+					yield "<script type='text/javascript'>var msg = new SpeechSynthesisUtterance('"+temp+"');window.speechSynthesis.speak(msg);</script><br>"
 				else:
-					word += value
+					word = word+value
 					yield value
 def predict(file_name, feats):
 	cl = pickle.load(open(file_name, "rb"))
@@ -53,3 +54,5 @@ if __name__ == "__main__":
 			else:
 				prev_word += word
 				print(word)
+
+#[[1, 2, 3, 4, 5], 'a']
