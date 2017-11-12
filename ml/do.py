@@ -1,11 +1,15 @@
 import pickle
 import serial
-from sklearn.tree import DecisionTreeClassifier
+
 
 prev_word = ' '
+prev_alpha = 'blank'
+word = ''
 
 def predict_from_serial(ser, file_name):
+	global prev_alpha
 	cl = pickle.load(open(file_name, "rb"))
+
 
 	# print(cl.predict([603, 555, 463, 499]))
 	#ser = serial.Serial("/dev/cu.HC-05-DevB", 9600)
@@ -14,10 +18,17 @@ def predict_from_serial(ser, file_name):
 		res = [ int(x) for x in res.split(b' ') ]
 		if len(res) == 4:
 			value = cl.predict([res])[0]
-			if value == "break":
-				yield "<br>"
+			if prev_alpha == value:
+				yield ""
 			else:
-				yield value
+				prev_alpha = value
+				if value == "blank":
+					temp = word
+					word = ''
+					yield "<br>"
+				else:
+					word += value
+					yield value
 def predict(file_name, feats):
 	cl = pickle.load(open(file_name, "rb"))
 	return cl.predict(feats)[0]
