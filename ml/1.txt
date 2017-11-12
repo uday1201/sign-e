@@ -1,0 +1,16 @@
+#what we have done till now
+
+1) we have designed our circuit and implemented it on Aurdino 
+2) We have used following sensors to detect gesture properly
+	1) Gyrosensor 
+	2) Accelero Sensor
+	3) Flex sensor
+
+3) All the sensors are sync and real time sensor readings are being sent to the host device 
+
+4) we have initated machine learning algorithms wherein using learn.py file ,we can train our model for dif.jestures whereas do.py file predicts them
+do.py file acts as a library which can be intergrated in any use case 
+
+#What is remaining
+
+All we have to do is to improve accuracy of our trained model
