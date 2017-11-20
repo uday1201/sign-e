@@ -12,7 +12,7 @@ def index():
 
 @app.route('/text_stream')
 def streamed_response():
-	return Response(stream_with_context(predict_from_serial(ser, "signe/main/ml/model.p")))
+	return Response(stream_with_context(predict_from_serial(ser, "ml/model.p")))
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True)
