@@ -4,7 +4,8 @@ import serial
 
 app = Flask(__name__, static_url_path='/static')
 
-ser = serial.Serial("/dev/cu.HC-05-DevB", 9600)
+#ser = serial.Serial("/dev/cu.HC-05-DevB", 9600)
+ser = serial.Serial("/dev/cu.usbmodem1411", 9600)
 
 @app.route('/')
 def index():

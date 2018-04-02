@@ -34,8 +34,8 @@ void loop()
     Serial.print(value2);
     Serial.print(" ");
     //ring
-//    Serial.print(value3);
-//    Serial.print(" ");
+    Serial.print(value3);
+    Serial.print(" ");
     //chi chi
     Serial.println(value4);
     if (digitalRead(12))

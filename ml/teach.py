@@ -1,6 +1,7 @@
 import serial
 
-ser = serial.Serial("/dev/cu.HC-05-DevB", 9600)
+#ser = serial.Serial("/dev/cu.HC-05-DevB", 9600)
+ser = serial.Serial("/dev/cu.usbmodem1411",9600)
 
 import sys
 label = sys.argv[1]

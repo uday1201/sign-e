@@ -17,7 +17,7 @@ def predict_from_serial(ser, file_name):
 	while True:
 		res = ser.readline()
 		res = [ int(x) for x in res.split(b' ') ]
-		if len(res) == 4:
+		if len(res) == 5:
 			value = cl.predict([res])[0]
 			if prev_alpha == value:
 				yield ""
@@ -42,7 +42,8 @@ def say(text):
 	os.system("afplay temp.mp3")
 
 if __name__ == "__main__":	
-	ser = serial.Serial("/dev/cu.HC-05-DevB", 9600)
+	#ser = serial.Serial("/dev/cu.HC-05-DevB", 9600)
+	ser = serial.Serial("/dev/cu.usbmodem1411", 9600)
 	for word in predict_from_serial(ser, "model.p"):
 		if len(prev_word) > 0 and (word == prev_word[-1] or (word == "blank" and prev_word == " ")):
 			pass
